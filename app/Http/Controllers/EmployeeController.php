@@ -8,7 +8,7 @@ class EmployeeController extends Controller
 {
     //
     public function index(){
-        echo "This is just for testing";
+        return view('employee.list');
     }
-    
+
 }
