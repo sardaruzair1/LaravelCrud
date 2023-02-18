@@ -27,23 +27,32 @@
             <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" id="name" placeholder="eg:sardar uzair" class="form-control"> 
+                        <input type="text" name="name" id="name" placeholder="eg:sardar uzair" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                        @error('name')
+                            <p class="invalid-feedback">{{ $message }}</p>
+                        @enderror 
                     </div>  
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" placeholder="someone@example.com" class="form-control"> 
+                        <input type="email" name="email" id="email" placeholder="someone@example.com" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                        @error('email')
+                        <p class="invalid-feedback">{{ $message }}</p>
+                        @enderror  
                     </div>  
                     <div class="mb-3">
-                        <label for="Address" class="form-label">Address</label>
-                        <textarea name="Address" id="Address" cols="30" rows="4" placeholder="streetno,area,city,country" class="form-control"></textarea> 
+                        <label for="address" class="form-label">Address</label>
+                        <textarea name="address" id="address" cols="30" rows="4" placeholder="streetno,area,city,country" class="form-control"  value="{{ old('address') }}"></textarea> 
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input type="file" name="image" id="image" class="form-control"> 
+                        <input type="file" name="image" id="image" class="form-control @error('email') is-invalid @enderror" enctype="multipart/form-data">
+                        @error('image')
+                        <p class="invalid-feedback">{{ $message }}</p>
+                        @enderror   
                     </div>  
             </div>
         </div>
-        <button class="btn btn-primary mt-4">Save Employee</button>
+        <button class="btn btn-primary mt-4" type="submit">Save Employee</button>
     </form>
     </div>
 </body>

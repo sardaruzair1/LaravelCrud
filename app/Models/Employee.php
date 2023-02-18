@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','email','address','image'];
+    
+    function notes() {
+        return $this->hasMany(Employee::class);
+    }
 }

@@ -21,6 +21,12 @@
                 <a href="{{ route('employees.create') }}" class="btn btn-primary">Create</a>
             </div>
         </div>
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @endif
         <div class="card border-0 shadow-lg">
             <div class="card-body">
                 <table class="table table-striped">
