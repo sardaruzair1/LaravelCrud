@@ -21,7 +21,8 @@
                 <a href="{{ route('employees.index') }}" class="btn btn-primary">Back To Home</a>
             </div>
         </div>
-        <form action="">
+        <form action="{{ route('employees.store') }}" method="post">
+            @csrf
         <div class="card border-0 shadow-lg">
             <div class="card-body">
                     <div class="mb-3">
