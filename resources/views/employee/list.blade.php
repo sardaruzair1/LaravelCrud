@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lravel 9 crud</title>
+    <title>managment</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 </head>
 <body>
     <div class="bg-dark py-3">
         <div class="container">
-            <div class="h4 text-white">Lravel 9 CRUD</div>
+            <div class="h4 text-white">Employee Management System</div>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
                     @foreach ($employees as $employee)
                         
                     
-                    <tr>
+                    <tr valign="middle">
                         <td>{{ $employee->id }}</td>
                         <td>
                             @if($employee->image != '' && file_exists(public_path().'/uploads/employees/'.$employee->image))
@@ -70,6 +70,9 @@
                     
                 </table>
             </div>
+        </div>
+        <div class="mt-4">
+            {{ $employees->links() }}
         </div>
     </div>
 </body>
