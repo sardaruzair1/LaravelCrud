@@ -9,7 +9,8 @@ class EmployeeController extends Controller
 {
     //
     public function index(){
-        return view('employee.list');
+        $employees = Employee::orderBy('id','DESC')->get();
+        return view('employee.list',['employees'=>$employees]);
     }
     public function create(){
         return view('employee.create');
@@ -25,6 +26,16 @@ class EmployeeController extends Controller
             $employee->email = $request->email;
             $employee->address = $request->address;
             $employee->save();
+        //Upload Image
+        if ($request->image) {
+            $ext = $request->image->getClientOriginalExtension();
+            $newFileName = time().'.'.$ext;
+            $request->image->move(public_path().'/uploads/employees/',$newFileName); // This will save file in a folder
+            
+            $employee->image = $newFileName;
+            $employee->save();
+        }
+
             $request->session()->flash('success','Employee Added Successfully! ');
             return redirect()->route('employees.index');
         }else {

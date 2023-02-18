@@ -23,8 +23,9 @@
         </div>
 
         @if (Session::has('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ Session::get('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         <div class="card border-0 shadow-lg">
@@ -38,17 +39,35 @@
                         <th>Address</th>
                         <th>Action</th>
                     </tr>
+                    @if ($employees->isNotEmpty())
+                    @foreach ($employees as $employee)
+                        
+                    
                     <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td>Mohit Singh</td>
-                        <td>sardar@example.com</td>
-                        <td>Dummy Address</td>
+                        <td>{{ $employee->id }}</td>
+                        <td>
+                            @if($employee->image != '' && file_exists(public_path().'/uploads/employees/'.$employee->image))
+                            <img src="{{ url('uploads/employees/'.$employee->image) }}" alt="" width="40" height="40" class="rounded-circle">
+                            @else
+                            <img src="{{ url('assets/images/no-image.png') }}" alt="" width="40" height="40" class="rounded-circle">
+                            @endif
+                        </td>
+                        <td>{{ $employee->name }}</td>
+                        <td>{{ $employee->email }}</td>
+                        <td>{{ $employee->address }}</td>
                         <td>
                             <a href="#" class="btn btn-primary btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
+                    @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6">Record Not Found</td>
+                        </tr>
+    
+                    @endif
+                    
                 </table>
             </div>
         </div>

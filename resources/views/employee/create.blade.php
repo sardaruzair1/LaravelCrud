@@ -21,7 +21,7 @@
                 <a href="{{ route('employees.index') }}" class="btn btn-primary">Back To Home</a>
             </div>
         </div>
-        <form action="{{ route('employees.store') }}" method="post">
+        <form action="{{ route('employees.store') }}" method="post" enctype="multipart/form-data">
             @csrf
         <div class="card border-0 shadow-lg">
             <div class="card-body">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input type="file" name="image" id="image" class="form-control @error('email') is-invalid @enderror" enctype="multipart/form-data">
+                        <input type="file" name="image" id="image" class="form-control @error('email') is-invalid @enderror">
                         @error('image')
                         <p class="invalid-feedback">{{ $message }}</p>
                         @enderror   
