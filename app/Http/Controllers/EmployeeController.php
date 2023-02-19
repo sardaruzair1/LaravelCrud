@@ -80,4 +80,12 @@ class EmployeeController extends Controller
         }
     }
 
+    public function destroy($id, Request $request){
+        $employee = Employee::findOrFail($id);
+        File::delete(public_path().'/uploads/employees/'.$employee->image);
+        $employee->delete();
+        $request->session()->flash('success','Employee Deleted Successfully! ');
+        return redirect()->route('employees.index');
+    }
+
 }
