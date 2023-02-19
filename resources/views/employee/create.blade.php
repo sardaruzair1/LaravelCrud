@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lravel 9 crud</title>
+    <title>Employee Management System</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 </head>
 <body>
     <div class="bg-dark py-3">
         <div class="container">
-            <div class="h4 text-white">Add New Employee</div>
+            <div class="h4 text-white">Employee Management System</div>
         </div>
     </div>
 
     <div class="container">
         <div class="d-flex justify-content-between py-3">
-            <div class="h4">Employees</div>
+            <div class="h4">Add New Employee</div>
             <div>
                 <a href="{{ route('employees.index') }}" class="btn btn-primary">Back To Home</a>
             </div>
